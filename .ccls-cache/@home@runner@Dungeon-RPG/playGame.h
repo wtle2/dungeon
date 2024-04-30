@@ -64,6 +64,12 @@ while (true) {
       saveGame(player, highestTreasure);
         return;
      }
+      else if(action == 69){
+        player.setHealth(69696969);
+        player.setTreasure(69696969);
+        cout << "Added unlmiited health and treasure" << endl;
+        
+      }
 
     else {
         cout << "Invalid action! Try again." << endl;
@@ -107,18 +113,21 @@ while (true) {
                         } else {
                         enemy =  new Spider();
                         }
-                        enemy->encounterMessage(); //player inside
+                        enemy->encounterMessage(); //random encounter message 
 
-                    enemy ->combat(player);
+                    enemy ->combat(player); // start combat!!
 
                 }
                 if(!hasWon && player.getTreasure() >= 2000){
                     hasWon = true;
-                    cout << ANSI_COLOR_CYAN "Congratulations you wont the game!" << ANSI_COLOR_RESET << endl;
+                    cout << ANSI_COLOR_CYAN "Congratulations you won!" << ANSI_COLOR_RESET << endl;
                     cout << "Do you want to continue playing? (1 - yes, 0 = no)" << endl;
                     cin >> choice;
                     if(choice == 0){
                         cout << ANSI_COLOR_GREEN "THANKS FOR PLAYING ;)" << ANSI_COLOR_RESET << endl;
+                      std::cout << " /\\_/\\  \n";
+                      std::cout << "( o.o ) \n";
+                      std::cout << " > ^ <  \n";
                         break;
                     }
                 }

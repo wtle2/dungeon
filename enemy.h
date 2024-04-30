@@ -8,9 +8,9 @@
 #include <cstdlib>
 #include "player.h"
 
- // class Player;
 
-class Enemy {
+
+class Enemy { // enemy class
 private:
     std::string type;
     int health;
@@ -21,18 +21,18 @@ public:
         : type(enemyType), health(enemyHealth), damage(enemyDamage) {}
 
 
+              
 
-
-    std::string getType() const { return type; }
-
-    int getHealth() const{
-        return health;
+    std::string getType() const { return type; } //get type of monster
+          
+    int getHealth() const{                //functions for the enemy
+        return health;    
     }
     void updateHealth(int amount){
           health += amount;
           if (health < 0) health = 0;
         }
-
+                                          
     int getDamage() const{
         return damage;
     }
@@ -44,9 +44,10 @@ public:
         std::cout << "The " << getType() << " attacks you and deals " << enemyDamage << " damage!" << std::endl;
         player.updateHealth(-damage); // Player takes damage from the enemy
        }
+
     void combat(Player& player);
 
-    static int getRandomNumber(int min, int max) {  // move to cpp file
+    static int getRandomNumber(int min, int max) {  
         static bool initialized = false;
         if (!initialized) {
             srand((unsigned)time(NULL)); // Seed the random number generator
@@ -55,16 +56,15 @@ public:
         return min + std::rand() % (max - min + 1);
     }
 
-    void encounterMessage() const { //insdie () Player& player
-        std::cout << "You encountered a " << type << "!" << std::endl;   // move
-      //  std::cout << "The " << type << " attacks you and deals " << damage << " damage!" << std::endl;
-     //   player.updateHealth(-damage);
+    void encounterMessage() const { 
+        std::cout << "You encountered a " << type << "!" << std::endl;  
+      
 
     }
 };
 
 
-class Goblin : public Enemy {
+class Goblin : public Enemy { //inheritance of enemy class for the monsters
 public:
     Goblin() : Enemy("Goblin", 100, 10) {}
 

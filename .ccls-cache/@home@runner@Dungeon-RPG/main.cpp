@@ -11,6 +11,7 @@ using namespace std;
 #define CLEAR_SCREEN "\033[2J\033[1;1H"
 
 // ANSI color codes
+
 #define ANSI_COLOR_RESET   "\x1b[0m"
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
@@ -40,16 +41,14 @@ bool loadGame(Player& player,int& treasure,int &highestTreasure) {
 void displayMenu(int& highestTreasure) {
     cout << CLEAR_SCREEN; // Clear the console screen
     cout << ANSI_COLOR_GREEN "========== " << ANSI_COLOR_RESET<< ANSI_COLOR_CYAN << "Cryptic dungeon of death" << ANSI_COLOR_RESET << ANSI_COLOR_GREEN << " ==========" << ANSI_COLOR_RESET<< endl;
+  
     cout << ANSI_COLOR_YELLOW << "Highest treasure value: [" << highestTreasure << "]" << ANSI_COLOR_RESET << endl; // add variable for this
     cout << "1. START NEW GAME" << endl;
     cout << "2. LOAD SAVE FILE" << endl;   // maybe implement difficulty level
     cout << ANSI_COLOR_RED << "3. Exit" << ANSI_COLOR_RESET << endl;
+    cout << "4. Instructions" << endl;
     cout << ANSI_COLOR_GREEN << "==============================================" << ANSI_COLOR_RESET << endl;
 }
-
-//implement save files
-
-
 
 int main() {
   int highestTreasure;
@@ -83,7 +82,7 @@ int main() {
             else if(choice == 2){
                 cout << "You chose Option 2" << endl;
                 cout << "Loading save file..." << endl;
-                if(loadGame(player, treasure, highestTreasure)){
+                if(loadGame(player, treasure, highestTreasure)){ //loading game
                    playGame(player,treasure, highestTreasure);
                   
                 }
@@ -91,11 +90,16 @@ int main() {
                
             
             }
-            else{
+            else if(choice == 3){
                 cout << ANSI_COLOR_RED << "Exiting..." << ANSI_COLOR_RESET << endl;
                 break;
             }
-            
+              else if(choice == 4){
+                cout << "Reach 10,000 treasure to win" << endl; //instructions
+              }
+            else{
+                cout << ANSI_COLOR_RED << "Invalid choice. Please try again." << ANSI_COLOR_RESET<< endl;
+            }
 
         
       

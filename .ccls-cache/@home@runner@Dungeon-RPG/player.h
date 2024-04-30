@@ -4,9 +4,9 @@
 #include <iostream>
 #include <cstdlib>
 
-class Enemy;
+class Enemy; //forward declaration
 
-class Player {
+class Player { //class player
 private:
     int health;
     int treasure;
@@ -20,7 +20,7 @@ public:
         return rand() % 50 + 10;
     }
     void attackEnemy(Enemy& enemy);
-
+//all player functions declared
     void updateHealth(int amount);
 
     int getHealth() const{return health;}
@@ -33,7 +33,6 @@ void setTreasure(int newTreasure) {
     treasure = newTreasure;
 }
 
-                                             // void encounterEvent();
     int getTreasure() const{ return treasure;}
 
     void addTreasure(int amount);
